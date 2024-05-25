@@ -1,0 +1,318 @@
+#translate-popup-root {
+    
+    div.checkbox { 
+        width: 1.2em;
+        height: 1.2em;
+        background: var(--active-100);
+        border-radius: var(--br);
+        cursor: pointer;
+        transition: var(--tr);
+        overflow: hidden;
+        position: relative;
+    
+        &::before {
+            content: '\f00c';
+            position: absolute;
+            font-family: fontawesome;
+            left: 150%;
+            top: 150%;
+            translate: -50% -50%;
+            font-size: .7em;
+            transition: var(--tr);
+        }
+    
+        &.checked {
+            background: var(--primary-100);
+    
+            &::before { 
+                left: 50%;
+                top: 50%;
+            }
+        }
+    
+        &:focus-within {
+            filter: brightness(120%);
+        }
+    }
+    
+    div.switch { 
+        width: 2.4em;
+        height: 1.2em;
+        background: var(--active-100);
+        border-radius: 2.4em;
+        cursor: pointer;
+        transition: var(--tr);
+        overflow: hidden;
+        position: relative;
+    
+        &::before {
+            content: '';
+            position: absolute;
+            font-family: fontawesome;
+            height: 80%;
+            aspect-ratio: 1;
+            background: var(--primary-50);
+            border-radius: 50%;
+    
+            left: 10%;
+            top: 50%;
+            translate: 0% -50%;
+            font-size: 1.4em;
+            transition: var(--tr);
+        }
+    
+        &.checked::before { 
+            background: var(--primary-100);
+            left: 90%;
+            top: 50%;
+            translate: -100% -50%;
+        }
+    
+        &:focus-within {
+            filter: brightness(120%);
+        }
+    }
+    
+    div.radio-list, div.radio-select-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: var(--padding-4);
+    }
+    
+    
+    div.radio-item {
+        display: flex;
+        gap: var(--padding-4);
+        align-items: center;
+    }
+    
+    span.radio-button { 
+        display: block;
+        width: 1em;
+        aspect-ratio: 1;
+        border: .25em solid var(--active-100);
+        border-radius: 50%;
+        transition: var(--tr);
+        cursor: pointer;
+        
+        &.checked {
+            border: .40em solid var(--primary-100);
+        }
+    }
+    
+    div.radio-select-item {
+        display: flex;
+        padding: var(--padding-4);
+        background: var(--active-100);
+        cursor: pointer;
+        transition: var(--tr);
+        
+        &.checked { background: var(--primary-100); }
+    }
+    
+    div.color-picker {
+        width: 1.4em;
+        height: 1.4em;
+        display: flex;
+        cursor: pointer;
+        box-shadow: 0 0 0 .1em var(--white);
+        border-radius: var(--br);
+    }
+
+    div.gradient-picker {
+        width: 6em;
+        display: flex;
+        height: fit-content;
+        border-radius: var(--br);
+        align-items: center;
+        justify-content: space-between;
+        div.color-picker {flex-shrink: 0;}
+    }
+    
+    button[class^="btn-"] {
+        position: relative;
+        overflow: clip;
+        min-width: fit-content;
+
+        &.btn-primary {--color: var(--primary-100)}
+        &.btn-secondary {--color: var(--secondary-100)}
+        &.btn-disabled {--color: var(--disabled-100)}
+        &.btn-active {--color: var(--active-100)}
+
+        &:not(.outline) {background: var(--color);}
+        &.outline {
+            border: var(--color) solid .15em;
+            background: transparent;
+        }
+
+        & span.click-effect-span {
+            content: '';
+            position: absolute;
+            width:30px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: #fff5;
+            translate: -50% -50%;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        &.click-effect-active span.click-effect-span {
+            animation: click-effect var(--tr-2) ease;
+        }
+    }
+
+    div.style-preview { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px;
+        position: relative;
+        font-size: 1.2em;
+        border-radius: var(--br);
+        overflow: hidden;
+
+        span.line { 
+            position: absolute;
+            width: 100%;
+            height: .25em;
+            bottom: 0;
+        }
+    }
+
+    div.color-picker-dialog {
+        display: flex;
+        width: 15em;
+        height: 15em;
+        flex-direction: column;
+        border-radius: var(--br);
+        position: absolute;
+
+        gap: .5em;
+
+        div.footer { 
+            display: flex;
+            flex-direction: column;
+            padding: .6em .5em;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        div.color-sliders { 
+            display: flex;
+            gap: .75em;
+
+            .color-display {
+                height: 100%;
+                aspect-ratio: 1;
+                border-radius: 100%;
+                border: .15em solid var(--white);
+            }
+
+            .sliders {
+                flex: 1;
+                display: flex;
+                gap: .75em;
+                flex-direction: column;
+            }
+        }
+
+        .canvas { 
+            border-radius: var(--br) var(--br) 0 0;
+            width: 15em;
+            aspect-ratio: 2;
+        }
+    }
+
+    div.input-color-range {
+        border-radius: 2em;
+        box-shadow: 0 0 3px #0004;
+        cursor: pointer;
+        position: relative;
+        width: 100%;
+        height: .7em;
+    }
+
+    div.input-color-range .pointer,
+    div.color-canvas .pointer { 
+        height: 1em;
+        aspect-ratio: 1;
+        border-radius: 100%;
+        border: .15em solid var(--white);
+        box-sizing: content-box;
+        position: absolute;
+        top: 50%;
+        translate: -50% -50%;
+    }
+
+    div.key-combination-dialog { 
+        width: 20em;
+        height: 20em;
+        border-radius: var(--br);
+
+        .header { 
+            font-size: 1.2em;
+            padding: calc(var(--padding-4,.6em) / 2);
+        }
+
+        button.delete-Btn { 
+            transition: var(--tr);
+        }
+    }
+
+    div.key-combination-wrapper {
+        border-radius: var(--br);
+        transition: var(--tr);
+        position: relative;
+        left: 0;
+        cursor: pointer;
+
+        span {
+            padding: 5px var(--padding-4);
+            border-radius: var(--br);
+        }
+    }
+
+    div.key-combination-display {
+        display: flex;
+        min-width: 2.5em;
+        cursor: pointer;
+
+        .divider { 
+            display: block;
+            width: 2px;
+            height: 1.6em;
+        }
+    }
+
+    .hiddenElement { 
+        all: unset;
+        display: block;
+        width: 0;
+        max-width: 0;
+        min-width: 0;
+        height: 0;
+        max-height: 0;
+        min-height: 0;
+        position: absolute;
+        left: -9999vw;
+        left: -9999vh;
+        opacity: 0;
+    }
+
+}
+
+@keyframes click-effect {
+    0% {opacity: 1;}
+
+    50%, 100% {
+        left: 50%;
+        top: 50%;
+        width: 150%;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "react-t1",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "w": "vite build --watch",
+    "start": "vite",
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test-settings": "vite build -c vite.config-settings.js",
+    "test-translate": "vite build -c vite.config-translate-popup.js",
+    "test": "vite build -c vite.config-settings.js && vite build -c vite.config-translate-popup.js"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "sass": "^1.77.2",
+    "vite": "^5.2.10"
+  }
+}

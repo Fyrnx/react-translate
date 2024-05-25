@@ -1,0 +1,79 @@
+@mixin not-one-line() {
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-3);
+
+    * {
+        white-space: nowrap;
+    }
+
+    div.option-body {
+        padding-inline-start: var(--padding-3);
+    }
+}
+
+#translate-popup-root {
+
+    div.settings-wrapper { height: 100vh; }
+
+    div.settings-wrapper div.content {
+        display: grid;
+        padding: var(--padding-3);
+        gap: var(--padding-3);
+        flex: 1;
+        grid-template-columns: repeat(auto-fit,minmax(clamp(300px,50vw,550px),1fr));
+        align-content: start;
+        overflow: auto;
+    }
+
+    div.side-nav {
+        height: 100%;
+        width: 8em;
+    }
+
+    div.section {
+        display: flex;
+        flex-direction: column;
+        gap: var(--padding-3);
+        
+        &-head { 
+            display: flex;
+            gap: var(--padding-3);
+            &::before {
+                content: "";
+                display: block;
+                width: .15em;
+                background: var(--primary-100);
+            }
+        }
+        
+    }
+
+    div.group {
+        display: flex;
+        flex-direction: column;
+        padding: var(--padding-3);
+        gap: var(--padding-3);
+        background: var(--secondary-100);
+        border-radius: var(--br);
+        font-weight: 400;
+
+        &-body:not(.no-padding) {
+            padding-inline-start: var(--padding-3);
+        }
+    }
+
+
+    div.option {
+        display: flex;
+        font-weight: 300;
+        color: var(--textdark);
+
+        &:not(.one-line) {@include not-one-line()}
+        @media screen and (width < 700px) {@include not-one-line()}
+
+        &-head {
+            min-width: 200px;
+        }
+    }
+}

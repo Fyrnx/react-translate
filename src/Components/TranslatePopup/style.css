@@ -1,0 +1,114 @@
+#translate-popup-root .translate-popup {
+    display: grid;
+    gap: 10px;
+    width: fit-content;
+    position: fixed;
+
+    & button:not(.no-background):where(:hover, :focus) {
+        background: var(--interactive-color);
+    }
+}
+
+#translate-popup-root .translate-popup main {
+    position: relative;
+    display: flex;
+    gap: 20px;
+    width: 500px;
+    height: 250px;
+    background: var(--bg-color);
+    justify-content: space-around;
+    align-items: center;
+    padding: .5em;
+    padding-top: 1em;
+    padding-bottom: 2em;
+    min-height: 0px !important; /* some sites may add min height to the <main> tag so we prevent it */
+
+    &::before {
+        content: '';
+        background: var(--interactive-color);
+        height: 80%;
+        width: 2px;
+        position: absolute;
+        top: calc(50% - .5em);
+        left: 50%;
+        translate: -50% -50%;
+    }
+
+    & .corner-buttons {
+        position: absolute;
+        right: 5px;
+        bottom: 5px;
+        display: flex;
+        gap: 5px;
+    }
+
+    & textarea {
+        flex: 1;
+        background: none;
+        outline: none;
+        border: none;
+        color: inherit;
+        font: inherit;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+#translate-popup-root .translate-popup footer {
+    display: flex;
+    background: var(--bg-color);
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
+
+    & > div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    & > div > button:not(.select-btn) {
+        height: 25px;
+        aspect-ratio: 1;
+    }
+}
+
+#translate-popup-root button.svg-button {
+    padding: 0;
+
+    & .shadow {
+        position: absolute;
+        display: flex;
+        filter: blur(3px);
+        transition: .3s;
+        scale: var(--buttons-shadow-size);
+    }
+}
+
+#translate-popup-root button.auto-detection {
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: auto 15% -3px 15%;
+        border-radius: 1px;
+        height: 1px;
+        scale: 0 1;
+        background: var(--interactive-color);
+        transition: .3s;
+    }
+}
+
+#translate-popup-root button.auto-detection.active {
+    &::before {
+        scale: 1 1;
+    }
+}
+
+#translate-popup-root button.select-btn {
+    height: 25px;
+}

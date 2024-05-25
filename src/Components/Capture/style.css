@@ -1,0 +1,113 @@
+#translate-popup-root div.page-selection { 
+    position: absolute;
+    box-shadow: 0 0 0 200vw #0005;
+
+    & span {
+        position: absolute;
+        pointer-events: none;
+    }
+
+    & span:nth-child(1 of .corner) {--x: -1; --y: -1;}
+    & span:nth-child(2 of .corner) {inset:auto 0 0 auto;--x: 1; --y: 1;}
+}
+
+#translate-popup-root div.page-selection.activated { 
+    & span.corner { 
+        display: block;
+        background: var(--primary-100);
+        position: absolute;
+        border-radius: 100%;
+        width: 15px;
+        aspect-ratio: 1;
+        rotate:calc(180deg * var(--i));
+        translate: calc(var(--x) * 7.5px) calc(var(--y) * 7.5px);
+    }
+}
+
+#translate-popup-root div.page-selection.installed { 
+    & span.corner { 
+        display: block;
+        border-radius: 0%;
+        width: 45px;
+        aspect-ratio: 1;
+
+        --deep: 15%;
+        --length: 70%;
+        --corner-deep: 15%;
+
+        background: none;
+        animation: circleAnimation 1s forwards;
+
+        &::before { 
+            content: '';
+            background: var(--primary-100);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            
+            clip-path: polygon(
+                0 0,
+                var(--length) 0,
+                calc(var(--length) - var(--corner-deep)) var(--deep),
+                var(--deep) var(--deep),
+                var(--deep) calc(var(--length) - var(--corner-deep)),
+                0 var(--length),
+                0 0
+            );
+            
+            translate: calc(-1 * var(--deep)) calc(-1 * var(--deep));
+        }
+        
+        rotate:calc(180deg * var(--i));
+    }
+}
+
+#translate-popup-root div.page-selection.reverse { 
+    & span.corner {rotate:calc(180deg * var(--i) + 90deg);}
+    & span:nth-child(1 of .corner) {inset:0 0 auto auto;--x: 1;}
+    & span:nth-child(2 of .corner) {inset:auto auto 0 0;--x: -1;}
+}
+
+#translate-popup-root dialog.page-selection-dialog { 
+    max-width: unset;
+    max-height: unset;
+    width: 100vw;
+    height: 100vh;
+    background: none;
+    overflow: clip;
+    position: fixed;
+}
+
+#translate-popup-root dialog.page-selection-dialog::backdrop {opacity: 0;}
+
+@keyframes circleAnimation {
+    from { 
+        clip-path: circle(10px at var(--deep) var(--deep));
+        width: 55px;
+    }
+
+    to { 
+        clip-path: circle(var(--length) at var(--deep) var(--deep));
+        width: 45px;
+    }
+}
+
+#translate-popup-root dialog.page-selection-dialog div.header {
+    display: flex;
+    gap:.2em;
+    color: white;
+    position: absolute;
+    z-index: 1;
+    padding: .3em .5em;
+    margin: 5px;
+    background: var(--bg-color);
+    border-radius: 1px;
+    height: fit-content !important; /* some sites may change the height in .header class so we prevent it */
+    min-height: 0px !important; /* some sites may change the min-height in .header class so we prevent it */
+    
+    & button { 
+        aspect-ratio: 1;
+        padding: .4em;
+        width: 1.8em;
+    }
+}

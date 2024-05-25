@@ -1,0 +1,19 @@
+@import url(https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css);
+
+#translate-popup-root i.fontawesome-icon.ver-1 { 
+    font-family: 'FontAwesome';
+    font-style: normal;
+    font-weight: 1;
+}
+
+#translate-popup-root i.fontawesome-icon.ver-2 { 
+    font-family: "Font Awesome 6 Pro";
+}
+
+#translate-popup-root span.svg-element { 
+    position: relative;
+    width: 20px;
+    height: 20px;
+    display: grid;
+    place-content: center;
+}

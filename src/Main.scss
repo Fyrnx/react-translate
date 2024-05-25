@@ -1,0 +1,177 @@
+// @import url(https://fonts.googleapis.com/css?family=manrope);
+@import url(https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css);
+
+:root { 
+    --bg-color: #0B0C10;
+    --primary-100: #7e57c2;
+    --primary-90: color-mix(in oklab, var(--primary-100) 100%, transparent 10%);
+    --primary-80: color-mix(in oklab, var(--primary-100) 100%, transparent 20%);
+    --primary-70: color-mix(in oklab, var(--primary-100) 100%, transparent 30%);
+    --primary-60: color-mix(in oklab, var(--primary-100) 100%, transparent 40%);
+    --primary-50: color-mix(in oklab, var(--primary-100) 100%, transparent 50%);
+
+    --white: #fff;
+
+    --shade: #9263e462;
+    --text: #FFFFFF;
+    --textdark: color-mix(in oklab, var(--text) 100%, #0000 30%);
+
+    --icon-gradient: linear-gradient(0deg, var(--text), var(--text));
+    --activated-gradient: linear-gradient(135deg,#6630FF ,color-mix(in oklch, #002993,#6630FF 40%));
+    --interactive-color: var(--primary-90);
+    --buttons-shadow-size: 0;
+
+    --secondary-100: #0F0F1A;
+    --secondary-90: color-mix(in oklab, var(--secondary-100) 100%, transparent 10%);
+    --secondary-80: color-mix(in oklab, var(--secondary-100) 100%, transparent 20%);
+    --secondary-70: color-mix(in oklab, var(--secondary-100) 100%, transparent 30%);
+    --secondary-60: color-mix(in oklab, var(--secondary-100) 100%, transparent 40%);
+    --secondary-50: color-mix(in oklab, var(--secondary-100) 100%, transparent 50%);
+
+    --active-100: #050510;
+    --active-90: color-mix(in oklab, var(--active-100) 100%, transparent 10%);
+    --active-80: color-mix(in oklab, var(--active-100) 100%, transparent 20%);
+    --active-70: color-mix(in oklab, var(--active-100) 100%, transparent 30%);
+    --active-60: color-mix(in oklab, var(--active-100) 100%, transparent 40%);
+    --active-50: color-mix(in oklab, var(--active-100) 100%, transparent 50%);
+
+    --br: .15em;
+    --br-2: .4em;
+
+    --tr: 300ms;
+    --tr-2: 1000ms;
+
+    --padding-1: .15em;
+    --padding-2: .3em;
+    --padding-3: .45em;
+    --padding-4: .6em;
+
+    --font: 'manrope', Arial, Helvetica, sans-serif;
+}
+
+body { 
+    height: 500vw;
+    margin: 0;
+}
+
+#translate-popup-root {
+    direction: ltr;
+    color: var(--text);
+    font-size: 22px;
+    font-family: var(--font, 'system-ui');
+    font-weight: 500;
+    position: absolute;
+    z-index: 100000000000000000;
+    background: var(--bg-color);
+    width: 100vw;
+
+    *, *::before, *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+     button,
+     a,
+     input[type="text"],
+     input[type="email"],
+     input[type="password"],
+     input[type="search"]
+     
+     { 
+        display: flex;
+        padding: 5px 10px;
+        background: none;
+        border: none;
+        font: inherit;
+        color: inherit;
+        border-radius: 2px;
+        outline: transparent;
+        transition: .3s;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        min-width: 0;
+        min-height: 0;
+        
+        &:where(a,button) {
+            cursor: pointer;
+        }
+        
+    
+        &.no-background {background: none;}
+        &:where(:focus-visible,.focus) {
+            outline: 1px solid var(--primary-100);
+            outline-offset: 2px;
+        }
+    }
+    
+    div.header ul  { 
+        display: flex;    
+        gap: 10px;
+        list-style: none;
+    
+        & li {
+            text-transform: capitalize;
+        }
+    }
+    
+     dialog { 
+        max-width: unset;
+        max-height: unset;
+        border: none;
+        width: 100%;
+        height: 100%;
+        background: none;
+        position: relative;
+    }
+}
+
+
+
+body.stop-scroll {
+    overflow: hidden;
+}
+
+#translate-popup-root .flex { 
+    display: flex;
+
+    &.center {
+        justify-content: center;
+        align-items: center;
+    }
+
+    &.dir-row { flex-direction: row; }
+    &.dir-column { flex-direction: column; }
+    &.gap-1 {gap: var(--padding-1)}
+    &.gap-2 {gap: var(--padding-2)}
+    &.gap-3 {gap: var(--padding-3)}
+    &.gap-4 {gap: var(--padding-4)}
+    &.justify-center { justify-content: center; }
+    &.justify-between { justify-content: space-between; }
+    &.justify-around { justify-content: space-around; }
+    &.justify-evenly { justify-content: space-evenly; }
+    &.justify-start { justify-content: flex-start; }
+    &.justify-end { justify-content: flex-end; }
+    &.align-center { align-items: center; }
+    &.align-stretch { align-items: stretch; }
+    &.align-normal { align-items: normal; }
+    &.align-start { align-items: flex-start; }
+    &.align-end { align-items: flex-end; }
+    &.wrap { flex-wrap: wrap; }
+}
+
+#translate-popup-root[id] {
+    .bg {background-color: var(--bg-color);}
+    .bg-primary {background-color: var(--primary-100);}
+    .bg-secondary {background-color: var(--secondary-100);}
+    .bg-active {background-color: var(--active-100);}
+    .bg-disabled {background-color: var(--disabled-100);}
+    .br {border-radius: var(--br);}
+    .br-2 {border-radius: var(--br-2);}
+    .padding-1 {padding: var(--padding-1)}
+    .padding-2 {padding: var(--padding-2)}
+    .padding-3 {padding: var(--padding-3)}
+    .padding-4 {padding: var(--padding-4)}
+}
+
